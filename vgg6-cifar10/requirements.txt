@@ -1,0 +1,5 @@
+torch==2.4.1
+torchvision==0.19.1
+wandb==0.18.5
+numpy==1.26.4
+matplotlib==3.9.2

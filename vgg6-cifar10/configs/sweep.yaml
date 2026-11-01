@@ -1,0 +1,27 @@
+# Main W&B sweep -> source of the parallel-coordinates plot (Q3, Q4).
+# wandb sweep configs/sweep.yaml ; wandb agent <entity>/vgg6-cifar10/<sweep_id>
+program: train.py
+project: vgg6-cifar10
+method: random            # switch to "bayes" to chase the best val_acc faster
+metric:
+  name: val_acc
+  goal: maximize
+parameters:
+  activation:
+    values: [relu, sigmoid, tanh, silu, gelu]
+  optimizer:
+    values: [sgd, nesterov, adam, adagrad, rmsprop, nadam]
+  batch_size:
+    values: [32, 64, 128, 256, 512]
+  epochs:
+    values: [10, 20, 30, 50]
+  lr:
+    values: [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05]
+  momentum:
+    values: [0.0, 0.9]
+  weight_decay:
+    values: [0.0, 0.00005, 0.0005]
+  batch_norm:
+    values: [true, false]
+  seed:
+    value: 42

@@ -1,0 +1,14 @@
+# Controlled study for Q2(c): batch size x epochs x learning rate.
+program: train.py
+project: vgg6-cifar10
+method: grid
+metric: {name: val_acc, goal: maximize}
+parameters:
+  batch_size: {values: [32, 128, 512]}
+  epochs: {values: [10, 30]}
+  lr: {values: [0.0001, 0.001, 0.01]}
+  activation: {value: relu}
+  optimizer: {value: nadam}
+  weight_decay: {value: 0.0005}
+  batch_norm: {value: true}
+  seed: {value: 42}

@@ -1,0 +1,15 @@
+# Controlled study for Q2(b): vary ONLY the optimizer (two learning rates each).
+program: train.py
+project: vgg6-cifar10
+method: grid
+metric: {name: val_acc, goal: maximize}
+parameters:
+  optimizer: {values: [sgd, nesterov, adam, adagrad, rmsprop, nadam]}
+  lr: {values: [0.001, 0.01]}
+  activation: {value: relu}
+  batch_size: {value: 128}
+  epochs: {value: 30}
+  momentum: {value: 0.9}
+  weight_decay: {value: 0.0005}
+  batch_norm: {value: true}
+  seed: {value: 42}

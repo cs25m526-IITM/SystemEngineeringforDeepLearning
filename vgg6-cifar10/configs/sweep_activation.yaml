@@ -1,0 +1,14 @@
+# Controlled study for Q2(a): vary ONLY the activation.
+program: train.py
+project: vgg6-cifar10
+method: grid
+metric: {name: val_acc, goal: maximize}
+parameters:
+  activation: {values: [relu, sigmoid, tanh, silu, gelu]}
+  optimizer: {value: nadam}
+  lr: {value: 0.001}
+  batch_size: {value: 128}
+  epochs: {value: 30}
+  weight_decay: {value: 0.0005}
+  batch_norm: {value: true}
+  seed: {value: 42}
